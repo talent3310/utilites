@@ -1,0 +1,33 @@
+Region_id,Region_desc,cadran_id,Cadran_desc,categorie_id,Categorie_desc,pos_x,pos_y,size,ratio
+1,All region,c1,Adjacent,1,FM,3,5,10,17
+1,All region,c1,Adjacent innovation,2,TN,7,7,3,17
+1,All region,c1,Adjacent innovation,3,FD,5,3,3,17
+1,All region,c1,Adjacent innovation,4,O,0,0,0,17
+1,All region,c2,Break-Through,1,FM,3,4,7,8
+1,All region,c2,Break-Through,2,TN,4,4,2,8
+1,All region,c2,Break-Through,3,FD,5,5,2,8
+1,All region,c2,Break-Through,4,O,4,6,4,8
+1,All region,c3,Core Innovation,1,FM,3,5,12,25
+1,All region,c3,Core Innovation,2,TN,5,4,5,25
+1,All region,c3,Core Innovation,3,FD,4,2,7,25
+1,All region,c3,Core Innovation,4,O,0,0,0,25
+1,All region,c4,Expansion,1,FM,5,3,3,10
+1,All region,c4,Expansion,2,TN,2,4,5,10
+1,All region,c4,Expansion,3,FD,4,5,7,10
+1,All region,c4,Expansion,4,O,0,0,0,10
+2,Region1,c1,Adjacent,1,FM,2,5,10,12
+2,Region1,c1,Adjacent innovation,2,TN,3,7,3,12
+2,Region1,c1,Adjacent innovation,3,FD,4,3,3,12
+2,Region1,c1,Adjacent innovation,4,O,5,0,4,12
+2,Region1,c2,Break-Through,1,FM,3,4,5,4
+2,Region1,c2,Break-Through,2,TN,4,4,2,4
+2,Region1,c2,Break-Through,3,FD,3,5,2,4
+2,Region1,c2,Break-Through,4,O,3,6,4,4
+2,Region1,c3,Core Innovation,1,FM,3,3,12,23
+2,Region1,c3,Core Innovation,2,TN,5,4,5,23
+2,Region1,c3,Core Innovation,3,FD,4,3,7,23
+2,Region1,c3,Core Innovation,4,O,0,0,0,23
+2,Region1,c4,Expansion,1,FM,3,3,3,12
+2,Region1,c4,Expansion,2,TN,2,4,3,12
+2,Region1,c4,Expansion,3,FD,1,5,7,12
+2,Region1,c4,Expansion,4,O,0,0,0,12

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width" />
+  <title>Example3</title>
+  <link href="content/Example_8.css" rel="stylesheet" />
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+  <script src="scripts/d3.js"></script>
+</head>
+
+<body>
+  <div style="width: 400px; height: 400px">
+    <div class="region">
+      Regions:
+      <select id="regionsddl" class="">
+        <option value="1" selected="selected">All Regions</option>
+        <option value="2">Region 1</option>
+      </select>
+    </div>
+    <div class="treemap-titlebar"> <span>Total Net Sales</span> by <span style="font-weight:bold;">Innovation Type</span></div>
+    <div style="margin-top: 20px;margin-left: 14px;">
+      <table class="buble-table">
+        <tr class="text-info">
+          <td width="180">Adjacent innovation</td>
+          <td width="180">Break-Through</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="chart1"><span>77%</span></div>
+          </td>
+          <td>
+            <div class="chart2"><span>77%</span></div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="chart3"><span>77%</span></div>
+          </td>
+          <td>
+            <div class="chart4"><span>77%</span></div>
+          </td>
+        </tr>
+        <tr class="text-info">
+          <td>Core Innovation</td>
+          <td>Expansion</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <script src="scripts/DataFile.js"></script>
+  <script src="scripts/script.js"></script>
+</body>
+
+</html>

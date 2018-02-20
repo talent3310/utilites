@@ -1,0 +1,98 @@
+﻿@font-face {
+  font-family: 'Gotham';
+  src: url('../fonts/GothamBook.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'GothamRounded';
+  src: url('../fonts/GothamRoundedBook.ttf') format('truetype');
+}
+
+body {
+  font-family: Gotham;
+}
+
+.region {
+  padding: 10px;
+  text-align: center;
+}
+
+select {
+  padding: 5px;
+  /*font-family: Gotham;*/
+  font-size: 15px;
+  width: 150px;
+}
+
+.treemap-titlebar {
+  background-color: #2665b8;
+  border-radius: 20px;
+  color: #fff;
+  font-size: 20px;
+  height: 38px;
+  text-align: center;
+  line-height: 1.9;
+}
+
+
+/*table.buble-table td {
+  border: 1px solid blue;
+}
+table.buble-table th, table.buble-table td {
+    padding: 0;
+}*/
+
+table.buble-table {
+  border-collapse: collapse;
+
+}
+
+table.buble-table th,
+table.buble-table td {
+  padding: 0;
+}
+
+table.buble-table tr,
+table.buble-table th,
+table.buble-table td:last-child {
+  border: 1px solid #a5a5a5;
+}
+
+table.buble-table tr td {
+  position: relative;
+}
+
+table.buble-table tr td span {
+  position: absolute;
+  font-family: GothamRounded;
+}
+
+table.buble-table .chart1 span {
+  top: 4px;
+  left: 4px;
+}
+
+table.buble-table .chart2 span {
+  top: 4px;
+  right: 4px;
+}
+
+table.buble-table .chart3 span {
+  bottom: 4px;
+  left: 4px;
+}
+
+table.buble-table .chart4 span {
+  bottom: 4px;
+  right: 4px;
+}
+
+table.buble-table .text-info td {
+  text-align: center;
+  padding: 2px;
+  border: none;
+}
+
+table.buble-table .text-info {
+  border: none;
+}

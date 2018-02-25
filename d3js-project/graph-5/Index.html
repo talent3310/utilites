@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width" />
+  <title>Graph 5</title>
+  <link href="content/Example_3.css" rel="stylesheet" />
+  <link href="content/font-awesome.min.css" rel="stylesheet" />
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+  <script src="scripts/d3.js"></script>
+</head>
+
+<body>
+    <table class="top-table">
+      <tbody>
+        <tr>
+          <td><div><span>Total Net Sales by</span> <b>Stages</b></div></td>
+          <td><span>Color legend:&nbsp;&nbsp;&nbsp;</span><div class="t-circle"></div><span>Milk</span></td>
+          <td><div class="t-circle"></div><span>Tailored Nutrition</span></td>
+          <td><div class="t-circle"></div><span>First Diet</span></td>
+          <td><div class="t-circle"></div><span>Organic</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="main-table">
+      <tbody>
+        <tr>
+          <td>
+            <div class="t-h-title"><span class="h-t">Projects Without<br>Bussiness Case</span></div>
+            <table class="left-table">
+              <tbody>
+                <tr>
+                  <td><div>30</div></td>
+                </tr>
+                <tr>
+                  <td><div>30</div></td>
+                </tr>
+                <tr>
+                  <td><div>30</div></td>
+                </tr>
+                <tr>
+                  <td><div>5</div></td>
+                </tr>
+                <tr>
+                  <td><div>-</div></td>
+                </tr>
+                <tr>
+                  <td><div>Total</div></td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+          <td>
+            <div class="t-h-title">
+              No.of Projects
+            </div>
+            <div id='stacked-bar-left'></div>
+          </td>
+          <td>
+            <div class="t-h-title">
+              Stages
+            </div>
+            <div class="stripes-tripzoid" style="margin: auto">
+              <div id="triangle-bottomright"></div>
+              <div id="triangle-bottomleft"></div>
+              <table class="tripzoid-table">
+                <tbody>
+                  <tr>
+                    <td width="120">data1</td>
+                    <td>SELECT</td>
+                    <td width="120">data4</td>
+                  </tr>
+                  <tr>
+                    <td>data1</td>
+                    <td>DEFINE</td>
+                    <td>data4</td>
+                  </tr>
+                  <tr>
+                    <td>data1</td>
+                    <td>DEVELOP</td>
+                    <td>data4</td>
+                  </tr>
+                  <tr>
+                    <td>data1</td>
+                    <td>IMPLEMENT</td>
+                    <td>data4</td>
+                  </tr>
+                  <tr>
+                    <td>data1</td>
+                    <td>LAUCH</td>
+                    <td>data4</td>
+                  </tr>
+                  <tr>
+                    <td colspan="3" style="text-align: center; font-weight: 600; color: black;font-size: 11pt;">POST_LAUNCH</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </td>
+          <td>
+            <div class="t-h-title">
+              Total Net Sales
+            </div>
+            <div id='stacked-bar-right'></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  <script src="scripts/script.js"></script>
+</body>
+
+</html>

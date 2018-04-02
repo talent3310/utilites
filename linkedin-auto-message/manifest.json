@@ -1,0 +1,27 @@
+{
+  "manifest_version": 2,
+  "name": "linkedin-auto-connect",
+  "description": "Linked auto connection scripts",
+  "version": "0.0.3",
+  "icons": {
+    "128": "components/icon.png"
+  },
+  "browser_action": {
+    "default_icon": "components/icon.png",
+    "default_popup": "components/html/popup.html"
+  },
+  "background": {
+    "scripts": ["components/js/background.js"]
+  },
+  "update_url": "http://0.0.0.0",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "webNavigation",
+    "*://*/*" 
+  ],
+  "content_scripts": [{
+    "matches": ["*://www.linkedin.com/feed/", "*://www.linkedin.com/*"],
+    "js": ["components/js/jquery.min.js", "components/js/class.localstorage.js", "components/js/async.min.js", "components/js/content.js"]
+  }]
+}

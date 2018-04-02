@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="/components/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="/components/css/w3css.css">
+  <link rel="stylesheet" type="text/css" href="/components/css/popup.css">
+</head>
+
+<body>
+  <div class="w3-card-4" style="min-width: 320px">
+    <header class="w3-container w3-light-grey">
+      <h5>Linkedin Auto Like</h5>
+    </header>
+    <div class="w3-container w3-center">
+      <div>
+        <textarea class="w3-input w3-border" style="resize:none" id="messageTxt">Hi, How are you?</textarea>
+      </div>
+      <div style="height: 10px;"></div>
+      <div id="add_contacts" class="">
+        <input type="number" style="width: 50px;height: 32px;vertical-align: middle;" min="10" max="100" step="10" value="50" id="percentValue"></input>
+        <button data-add-contacts="go" id="btn_go" class="w3-btn w3-dark-grey w3-small">Go</button>
+        <button data-add-contacts="stop" id="btn_stop" class="w3-btn w3-dark-grey w3-small">Stop</button>
+        <span id="isLoading"><i class="fa fa-spinner fa-spin"></i></span>
+      </div>
+      <!-- <p id="desc_go">Click the button to start</p>
+      <p id="desc_stop">Click the button to stop</p> -->
+      <p class="w3-tiny w3-text-grey">mail: <a href="mailto:rafsanrox1011@gmail.com?Subject=Hello" target="_top">rafsanrox1011@gmail.com</a></p>
+    </div>
+  </div>
+
+  <script src="/components/js/jquery.min.js"></script>
+  <script src="/components/js/class.localstorage.js"></script>
+  <script src="/components/js/popup.js"></script>
+</body>
+</html>

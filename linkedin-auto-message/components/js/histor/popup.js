@@ -212,7 +212,7 @@ $(function() {
 
   getCurrentTab(function(currentTab) {
 
-    if (1) {
+    if (isTabLinkedinPymk(currentTab)) {
 
       var categ = null;
 

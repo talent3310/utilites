@@ -8,6 +8,21 @@ var currentPageNum;
 function sendMessageToBackground(obj) {
   chrome.runtime.sendMessage(obj);
 }
+function clickLink(link) {
+    var cancelled = false;
+
+    if (document.createEvent) {
+        var event = document.createEvent("MouseEvents");
+        event.initMouseEvent("click", true, true, window,
+            0, 0, 0, 0, 0,
+            false, false, false, false,
+            0, null);
+        cancelled = !link.dispatchEvent(event);
+    }
+    else if (link.fireEvent) {
+        cancelled = !link.fireEvent("onclick");
+    }
+}
 
 function eachContactsList(callback) {
   console.log('---one scroll section---');
@@ -32,6 +47,8 @@ function eachContactsList(callback) {
         // jQuery(item).click();
         $(item).bind('click', function (ev) {
         }).click();
+
+        
         if(buttonTxt.trim() == 'Connect') {
           count ++;
           setTimeout(function() {
@@ -83,9 +100,8 @@ function eachContactsList(callback) {
         } else if(buttonTxt.trim() == 'Message') {
           count++;
           setTimeout(function() {
-            e = jQuery.Event("keyup");
-            e.which = 65 //enter key
-            jQuery("textarea.ember-text-area.msg-form__textarea[name='message']").trigger(e);
+
+            clickLink(jQuery("ul.msg-s-message-list.list-style-none")[0]);
             // jQuery("ul.msg-s-message-list.list-style-none").click();
             // jQuery("ul.msg-s-message-list.list-style-none").mouseenter();
             // jQuery("ul.msg-s-message-list.list-style-none").mousedown();

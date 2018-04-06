@@ -8,6 +8,22 @@ var currentPageNum;
 function sendMessageToBackground(obj) {
   chrome.runtime.sendMessage(obj);
 }
+function clickLink(link) {
+    var cancelled = false;
+
+    if (document.createEvent) {
+      console.log('wwwwwwww');
+        var event = document.createEvent("MouseEvents");
+        event.initMouseEvent("click", true, true, window,
+            0, 0, 0, 0, 0,
+            false, false, false, false,
+            0, null);
+        cancelled = !link.dispatchEvent(event);
+    }
+    else if (link.fireEvent) {
+        cancelled = !link.fireEvent("onclick");
+    }
+}
 
 function eachContactsList(callback) {
   console.log('---one scroll section---');
@@ -32,6 +48,8 @@ function eachContactsList(callback) {
         // jQuery(item).click();
         $(item).bind('click', function (ev) {
         }).click();
+
+
         if(buttonTxt.trim() == 'Connect') {
           count ++;
           setTimeout(function() {
@@ -83,9 +101,8 @@ function eachContactsList(callback) {
         } else if(buttonTxt.trim() == 'Message') {
           count++;
           setTimeout(function() {
-            e = jQuery.Event("keyup");
-            e.which = 65 //enter key
-            jQuery("textarea.ember-text-area.msg-form__textarea[name='message']").trigger(e);
+
+            clickLink(jQuery("ul.msg-s-message-list.list-style-none")[0]);
             // jQuery("ul.msg-s-message-list.list-style-none").click();
             // jQuery("ul.msg-s-message-list.list-style-none").mouseenter();
             // jQuery("ul.msg-s-message-list.list-style-none").mousedown();
@@ -152,19 +169,42 @@ function scrollDownFilters() {
     });
   }, 500); //page scroll loading time
 }
+ 
+var insert_message = function(e, t, callback) {
+  t.focusout().keyup().change().focus().keyup(), t.val(e)
+}
+var imitate_writing = function(e, t, callback) {
+  ! function i(s) {
+      if (e.length <= s++) return t.val(e), t.keyup();
+      t.val(e.substring(0, s)), t.focusout().keyup().change().focus().keyup(), t.scrollTop(t[0].scrollHeight), " " != t.val()[t.val().length - 1] && t.focus();
+      var n = Math.floor(50 * Math.random()) + 90;
+      setTimeout(function() {
+          i(s)
+      }, n)
+  }(0)
+}     
 
 function onRequest(request, sender, sendResponse) {
-
-  status = request.status;
-  msgTxt = request.msgTxt;
-  actionNums = request.actionNums;
-  console.log('contents: ', actionNums);
-  if (request.action == 'add_contacts' && request.status == 'go') {
-    if ($(window).scrollTop() == $(document).height() - $(window).height()) {
-      scroll(0, 0);
-    }
-    scrollDownFilters();
-  }
+  setTimeout(function() {
+    $("button.pv-s-profile-actions.pv-s-profile-actions--message.button-primary-large").click();
+    // jQuery("#profile-wrapper").find(".pv-top-card-section").find("button.pv-s-profile-actions--message").click();
+    setTimeout(function(){
+      var t = $("textarea.ember-text-area.msg-form__textarea[name='message']");
+       
+      // t.click().focus(), t.val(''); t.focus().focusout().keyup().change();    
+      // t.focus().focusout().keyup().change(), t.val(""), t.focus().focusout().keyup().change();
+      setTimeout(function() { 
+        t.sendkeys('A');
+        t.val('How are you?');
+        
+        var sbmtBtn = $("button[data-control-name='send']");
+        sbmtBtn.prop("disabled", false);
+        setTimeout(function(){
+          sbmtBtn.click();
+        }, 1000);       
+      }, 1000);
+    }, 1000);
+  }, 4000);
 
 }
 

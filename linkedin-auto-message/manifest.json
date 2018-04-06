@@ -22,6 +22,6 @@
   ],
   "content_scripts": [{
     "matches": ["*://www.linkedin.com/feed/", "*://www.linkedin.com/*"],
-    "js": ["components/js/jquery.min.js", "components/js/class.localstorage.js", "components/js/async.min.js", "components/js/content.js"]
+    "js": ["components/js/jquery.min.js", "components/js/bililiteRange.js", "components/js/jquery.sendkeys.js", "components/js/class.localstorage.js", "components/js/async.min.js", "components/js/content.js"]
   }]
 }

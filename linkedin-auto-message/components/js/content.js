@@ -9,6 +9,27 @@ function sendMessageToBackground(obj) {
   chrome.runtime.sendMessage(obj);
 }
 
+var randomTime = function() {
+  return (Math.floor(Math.random() * 1) + 1) * 5000;
+  // return 0;
+}
+
+function clickLink(link) {
+    var cancelled = false;
+
+    if (document.createEvent) {
+        var event = document.createEvent("MouseEvents");
+        event.initMouseEvent("click", true, true, window,
+            0, 0, 0, 0, 0,
+            false, false, false, false,
+            0, null);
+        cancelled = !link.dispatchEvent(event);
+    }
+    else if (link.fireEvent) {
+        cancelled = !link.fireEvent("onclick");
+    }
+}
+
 function eachContactsList(callback) {
   console.log('---one scroll section---');
   async.eachSeries(jQuery('.search-result__actions .ember-view button.search-result__actions--primary:enabled'), function(item, callback_1) {
@@ -28,8 +49,11 @@ function eachContactsList(callback) {
       setTimeout(function() {
         jQuery(item).css("background-color", "yellow");
         jQuery(item).css("border", "1px solid black");
-        jQuery(item).click();
-
+        jQuery(item).attr("data-is-animating-click", true);
+        // jQuery(item).click();
+        $(item).bind('click', function (ev) {
+        }).click();
+  
         if(buttonTxt.trim() == 'Connect') {
           count ++;
           setTimeout(function() {
@@ -38,25 +62,61 @@ function eachContactsList(callback) {
               jQuery("div#li-modal-container textarea").val(msgTxt);
               setTimeout(function() {
                 jQuery("div#li-modal-container button[name='cancel']").click();
-                callback_1();
+                // jQuery("div#li-modal-container button.button-primary-large").click();
+                setTimeout(function() {
+                  callback_1();
+                }, 1000);
+                
               }, 500);              
             }, 500);
           }, 1500);
         } else if(buttonTxt.trim() == 'InMail') {
           count++;
             setTimeout(function() {
-              jQuery("input.msg-inmail-compose-widget__subject[name='subject'] ").val('Hello');
-              jQuery("textarea.ember-text-area.msg-messaging-form__message[name='message'] ").val(msgTxt);
+              var subjectInput = jQuery("input.msg-inmail-compose-widget__subject[name='subject']");
+              subjectInput.click();
+              subjectInput.sendkeys('A');
+              subjectInput.val("Hello");
+
               setTimeout(function() {
-                // jQuery("button.msg-messaging-form__send-button[type='submit']").click(); //send button
-                jQuery("div#artdeco-modal-outlet button.msg-inmail-compose-widget__title-button[aria-label='Dismiss']").click();
-                callback_1();
-              }, 500);
-              
+                var msgInput = jQuery("textarea.ember-text-area.msg-messaging-form__message[name='message']");
+                msgInput.click();
+                msgInput.sendkeys('A');
+                msgInput.val(msgTxt);
+
+                setTimeout(function() {
+                  //jQuery("div#artdeco-modal-outlet button.msg-inmail-compose-widget__title-button[aria-label='Dismiss']").click();
+                  
+                  jQuery("button.msg-messaging-form__send-button[type='submit']").prop("disabled", false);
+                  jQuery("button.msg-messaging-form__send-button[type='submit']").click(); //send button
+                  setTimeout(function() {
+                    callback_1();
+                  }, 1000);
+                }, 1000);
+              }, 1000);
+
+
             }, 1000);
+        } else if(buttonTxt.trim() == 'Message') {
+          count++;
+          setTimeout(function() {
+            var t = $("textarea.ember-text-area.msg-form__textarea[name='message']");
+            setTimeout(function() { 
+              t.sendkeys('A');
+              t.val(msgTxt);
+              var sbmtBtn = $("button[data-control-name='send']");
+              sbmtBtn.prop("disabled", false);
+              setTimeout(function(){
+                sbmtBtn.click();
+                setTimeout(function(){
+                  $("button.msg-overlay-bubble-header__control[data-control-name='overlay.close_conversation_window']").click();
+                  callback_1();
+                }, 1000);
+              }, 1000);       
+            }, 1000);
+          }, 3000);
         }
-        
-      }, 1000); // human time setting
+      }, randomTime()); // human time setting
     }
   }, function(err) {
     callback();
